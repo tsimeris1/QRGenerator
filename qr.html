@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      border-radius: 30px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #b01c1f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      border-radius: 30px;
+    }
+
+    button:hover {
+      background-color: #52070b;
+    }
+
+    #qrcode {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>QR Code Generator</h1>
+    <input type="text" id="text-input" placeholder="Enter text to generate QR code">
+    <br>
+    <button onclick="generateQRCode()">Generate QR Code</button>
+    <div id="qrcode"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    function generateQRCode() {
+      // Clear the previous QR code
+      document.getElementById("qrcode").innerHTML = "";
+      
+      // Get the text input from the user
+      const text = document.getElementById("text-input").value;
+      
+      // Check if the input is not empty
+      if (text.trim()) {
+        // Generate the QR code
+        new QRCode(document.getElementById("qrcode"), {
+          text: text,
+          width: 128,
+          height: 128,
+        });
+      } else {
+        alert("Please enter a valid text!");
+      }
+    }
+  </script>
+
+</body>
+</html>
